@@ -47,88 +47,7 @@
       cursor: pointer;
     }
 
-    .main {
-      text-align: center;
-      padding: 2rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .main h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .main p {
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    .configurador {
-      background-color: #fff;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      animation: slideUp 1s ease-out;
-    }
-
-    .silla-img {
-      width: 200px;
-      margin: 0 auto 1rem;
-    }
-
-    .opciones {
-      margin: 1rem 0;
-    }
-
-    .opciones button {
-      margin: 0.3rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      background-color: #f9f9f9;
-      cursor: pointer;
-    }
-
-    .colores {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
-    .color {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .cuadro-color {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      margin-bottom: 0.3rem;
-      border: 1px solid #ccc;
-    }
-
-    .beige { background-color: #f1e4cb; }
-    .madera { background-color: #e7c996; }
-
-    .btn-cotizar {
-      margin-top: 1.5rem;
-      padding: 0.7rem 2rem;
-      background-color: #165a55;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .personalizador {
-      display: none;
+    .main, .personalizador, .seguimiento {
       max-width: 800px;
       margin: 3rem auto;
       background: #fff;
@@ -138,9 +57,8 @@
       animation: fadeIn 1s ease-in-out;
     }
 
-    .personalizador h2 {
+    h1, h2 {
       text-align: center;
-      margin-bottom: 1rem;
     }
 
     .selector {
@@ -159,14 +77,58 @@
       border: 1px solid #ccc;
     }
 
+    .btn {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: #165a55;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .precio {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #165a55;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .artesano {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .artesano img {
+      width: 100px;
+      border-radius: 50%;
+      margin-top: 0.5rem;
+    }
+
+    .seguimiento {
+      display: none;
+      text-align: center;
+    }
+
+    .etapas {
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .etapa {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-left: 4px solid #165a55;
+      background-color: #f2f2f2;
+      border-radius: 6px;
+    }
+
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
-    }
-
-    @keyframes slideUp {
-      from {transform: translateY(30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
     }
   </style>
 </head>
@@ -188,73 +150,95 @@
   <section class="main" id="main">
     <h1>Diseña muebles a tu medida</h1>
     <p>Personaliza y cotiza tus propios muebles con artesanos locales y materiales sostenibles.</p>
+    <button class="btn" onclick="mostrarPersonalizador()">Empezar</button>
   </section>
 
-  <section class="configurador" id="configurador">
-    <img src="ff568447-965b-474a-9d1d-638450a17f1b.png" alt="Silla personalizada" class="silla-img" />
-    <div class="opciones">
-      <button>Respaldo</button>
-      <button>Asiento</button>
-      <button>Patas</button>
-    </div>
-    <div class="colores">
-      <div class="color">
-        <div class="cuadro-color beige"></div>
-        <span>Tela Beige</span>
-      </div>
-      <div class="color">
-        <div class="cuadro-color madera"></div>
-        <span>Madera Clara</span>
-      </div>
-    </div>
-    <button class="btn-cotizar" onclick="mostrarPersonalizador()">Cotizar</button>
-  </section>
-
-  <section class="personalizador" id="personalizador">
+  <section class="personalizador" id="personalizador" style="display: none;">
     <h2>Personaliza tu mueble</h2>
 
     <div class="selector">
       <label for="color">Color de Tela:</label>
       <select id="color">
-        <option>Beige</option>
-        <option>Gris Claro</option>
-        <option>Azul Marino</option>
+        <option value="0">Beige</option>
+        <option value="10">Gris Claro (+$10)</option>
+        <option value="20">Azul Marino (+$20)</option>
       </select>
     </div>
 
     <div class="selector">
       <label for="madera">Tipo de Madera:</label>
       <select id="madera">
-        <option>Madera Clara</option>
-        <option>Madera Oscura</option>
-        <option>Bambú</option>
+        <option value="0">Madera Clara</option>
+        <option value="15">Madera Oscura (+$15)</option>
+        <option value="25">Bambú (+$25)</option>
       </select>
     </div>
 
     <div class="selector">
       <label for="tela">Tipo de Tela:</label>
       <select id="tela">
-        <option>Algodón</option>
-        <option>Lino</option>
-        <option>Cuero ecológico</option>
+        <option value="0">Algodón</option>
+        <option value="10">Lino (+$10)</option>
+        <option value="20">Cuero ecológico (+$20)</option>
       </select>
     </div>
 
     <div class="selector">
       <label for="dimensiones">Dimensiones:</label>
       <select id="dimensiones">
-        <option>Pequeña</option>
-        <option>Mediana</option>
-        <option>Grande</option>
+        <option value="0">Pequeña</option>
+        <option value="15">Mediana (+$15)</option>
+        <option value="30">Grande (+$30)</option>
       </select>
+    </div>
+
+    <button class="btn" onclick="cotizar()">Cotizar</button>
+
+    <div class="precio" id="precioFinal" style="display: none;"></div>
+
+    <div class="artesano" id="artesano" style="display: none;">
+      <p>Tu mueble será elaborado por:</p>
+      <strong>Juan López</strong><br/>
+      <img src="artesano1.jpg" alt="Artesano Juan López">
+    </div>
+
+    <button class="btn" onclick="mostrarSeguimiento()" style="display: none;" id="btnPedido">Hacer pedido</button>
+  </section>
+
+  <section class="seguimiento" id="seguimiento">
+    <h2>Seguimiento del pedido</h2>
+    <p>Tu mueble está siendo elaborado. Aquí puedes ver el estado:</p>
+
+    <div class="etapas">
+      <div class="etapa"><strong>✅ Pedido confirmado</strong> – Hemos recibido tu pedido.</div>
+      <div class="etapa"><strong>🛠️ En producción</strong> – El artesano está trabajando en tu mueble.</div>
+      <div class="etapa"><strong>🚚 En camino</strong> – Será entregado entre 5 a 7 días hábiles.</div>
     </div>
   </section>
 
   <script>
     function mostrarPersonalizador() {
       document.getElementById('main').style.display = 'none';
-      document.getElementById('configurador').style.display = 'none';
       document.getElementById('personalizador').style.display = 'block';
+    }
+
+    function cotizar() {
+      let base = 100;
+      let color = parseInt(document.getElementById('color').value);
+      let madera = parseInt(document.getElementById('madera').value);
+      let tela = parseInt(document.getElementById('tela').value);
+      let dimensiones = parseInt(document.getElementById('dimensiones').value);
+      let total = base + color + madera + tela + dimensiones;
+
+      document.getElementById('precioFinal').innerText = `Precio final: $${total}`;
+      document.getElementById('precioFinal').style.display = 'block';
+      document.getElementById('artesano').style.display = 'block';
+      document.getElementById('btnPedido').style.display = 'block';
+    }
+
+    function mostrarSeguimiento() {
+      document.getElementById('personalizador').style.display = 'none';
+      document.getElementById('seguimiento').style.display = 'block';
     }
   </script>
 
