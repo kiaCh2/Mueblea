@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>MUEBLEA - Diseña a tu medida</title>
+  <title>MUEBLEA</title>
   <style>
     body {
       margin: 0;
@@ -11,11 +11,12 @@
       color: #2f3e46;
     }
     header {
-      background-color: #eaf4f4;
+      background-color: #fff;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #ddd;
     }
     .logo {
       font-size: 28px;
@@ -30,38 +31,54 @@
     }
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 50px 20px;
     }
     .hero h1 {
-      font-size: 42px;
+      font-size: 36px;
       margin-bottom: 10px;
     }
     .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
+      font-size: 18px;
       color: #4b4b4b;
+      margin-bottom: 30px;
     }
-    .hero button {
+    .options {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .options label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    .options select, .options input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
       background-color: #1b4d3e;
       color: white;
       border: none;
-      padding: 15px 30px;
+      padding: 14px 28px;
       font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
     }
-    .product-img {
-      margin-top: 40px;
+    img {
       max-width: 700px;
       width: 90%;
+      margin: 30px 0;
       border-radius: 10px;
-      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      text-align: center;
-      font-size: 14px;
-      margin: 40px 0;
-      color: #888;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -71,22 +88,51 @@
   <div class="logo">🏠 MUEBLEA</div>
   <nav>
     <a href="#">Diseñar</a>
-    <a href="#">Explorar</a>
-    <a href="#">Ingresar</a>
+    <a href="#">Cotizar</a>
+    <a href="#">Sostenibilidad</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h1>Diseña a tu medida,<br>vive a tu estilo</h1>
-  <p>Muebles personalizados, ecológicos y hechos por artesanos locales</p>
-  <button>Comienza a diseñar</button>
-  <br><br>
-  <img class="product-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Mueble personalizado">
+  <h1>Diseña a tu medida, vive a tu estilo</h1>
+  <p>Personaliza y cotiza tus propios muebles con artesanos locales y materiales sostenibles.</p>
+  <img src="https://i.ibb.co/k5Z4Knn/mueblea-mesa.png" alt="Mueble">
+  <button onclick="mostrarOpciones()">Cotizar</button>
 </section>
 
-<footer>
-  © 2025 MUEBLEA – Conectando diseño, sostenibilidad y comunidad.
-</footer>
+<div class="options" id="opciones">
+  <label for="medidas">📏 Medidas:</label>
+  <select id="medidas">
+    <option>100 x 40 x 50 cm</option>
+    <option>120 x 45 x 55 cm</option>
+    <option>Personalizadas</option>
+  </select>
+
+  <label for="color">🎨 Color:</label>
+  <select id="color">
+    <option>Claro</option>
+    <option>Oscuro</option>
+  </select>
+
+  <label for="material">🌿 Material:</label>
+  <select id="material">
+    <option>Madera reciclada</option>
+    <option>Madera nueva certificada</option>
+  </select>
+
+  <label for="estilo">🛋️ Estilo de diseño:</label>
+  <select id="estilo">
+    <option>Minimalista</option>
+    <option>Rústico</option>
+    <option>Escandinavo</option>
+  </select>
+</div>
+
+<script>
+  function mostrarOpciones() {
+    document.getElementById("opciones").style.display = "block";
+  }
+</script>
 
 </body>
 </html>
