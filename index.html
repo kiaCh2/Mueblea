@@ -1,138 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>MUEBLEA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mueblea - Diseña tus muebles</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fdf8f3;
-      color: #2f3e46;
+      margin: 0;
+      background-color: #fefaf4;
+      color: #2b2b2b;
     }
+
     header {
-      background-color: #fff;
-      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ddd;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      background-color: #ffffff;
     }
+
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #1b4d3e;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
+    .logo img {
+      height: 32px;
+    }
+
     nav a {
-      margin-left: 20px;
+      margin: 0 1rem;
       text-decoration: none;
-      color: #1b4d3e;
+      color: #2b2b2b;
       font-weight: 500;
     }
-    .hero {
+
+    .vender-btn {
+      background-color: #ffffff;
+      border: 1px solid #2b2b2b;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .main {
       text-align: center;
-      padding: 50px 20px;
+      padding: 2rem;
+      animation: fadeIn 1s ease-in-out;
     }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+
+    .main h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    .hero p {
-      font-size: 18px;
-      color: #4b4b4b;
-      margin-bottom: 30px;
+
+    .main p {
+      font-size: 1.1rem;
+      color: #555;
     }
-    .options {
-      margin: 30px auto;
-      width: 90%;
-      max-width: 700px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    .configurador {
+      background-color: #fff;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      animation: slideUp 1s ease-out;
+    }
+
+    .silla-img {
+      width: 200px;
+      margin: 0 auto 1rem;
+    }
+
+    .opciones {
+      margin: 1rem 0;
+    }
+
+    .opciones button {
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .colores {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .color {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .cuadro-color {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      margin-bottom: 0.3rem;
+      border: 1px solid #ccc;
+    }
+
+    .beige { background-color: #f1e4cb; }
+    .madera { background-color: #e7c996; }
+
+    .btn-cotizar {
+      margin-top: 1.5rem;
+      padding: 0.7rem 2rem;
+      background-color: #165a55;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .personalizador {
       display: none;
+      max-width: 800px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
     }
-    .options label {
+
+    .personalizador h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .selector {
+      margin: 1rem 0;
+    }
+
+    .selector label {
       font-weight: bold;
-      display: block;
-      margin-top: 15px;
     }
-    .options select, .options input {
+
+    .selector select {
+      margin-top: 0.5rem;
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      padding: 0.5rem;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    button {
-      background-color: #1b4d3e;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
-    img {
-      max-width: 700px;
-      width: 90%;
-      margin: 30px 0;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    @keyframes slideUp {
+      from {transform: translateY(30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">🏠 MUEBLEA</div>
-  <nav>
-    <a href="#">Diseñar</a>
-    <a href="#">Cotizar</a>
-    <a href="#">Sostenibilidad</a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Mueblea logo" />
+      <strong>MUEBLEA</strong>
+    </div>
+    <nav>
+      <a href="#">Diseña tu mueble</a>
+      <a href="#">Cotizar</a>
+      <a href="#">Sostenibilidad</a>
+      <button class="vender-btn">Vender</button>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>Diseña a tu medida, vive a tu estilo</h1>
-  <p>Personaliza y cotiza tus propios muebles con artesanos locales y materiales sostenibles.</p>
-  <img src="https://i.ibb.co/k5Z4Knn/mueblea-mesa.png" alt="Mueble">
-  <button onclick="mostrarOpciones()">Cotizar</button>
-</section>
+  <section class="main" id="main">
+    <h1>Diseña muebles a tu medida</h1>
+    <p>Personaliza y cotiza tus propios muebles con artesanos locales y materiales sostenibles.</p>
+  </section>
 
-<div class="options" id="opciones">
-  <label for="medidas">📏 Medidas:</label>
-  <select id="medidas">
-    <option>100 x 40 x 50 cm</option>
-    <option>120 x 45 x 55 cm</option>
-    <option>Personalizadas</option>
-  </select>
+  <section class="configurador" id="configurador">
+    <img src="silla.png" alt="Silla personalizada" class="silla-img" />
+    <div class="opciones">
+      <button>Respaldo</button>
+      <button>Asiento</button>
+      <button>Patas</button>
+    </div>
+    <div class="colores">
+      <div class="color">
+        <div class="cuadro-color beige"></div>
+        <span>Tela Beige</span>
+      </div>
+      <div class="color">
+        <div class="cuadro-color madera"></div>
+        <span>Madera Clara</span>
+      </div>
+    </div>
+    <button class="btn-cotizar" onclick="mostrarPersonalizador()">Cotizar</button>
+  </section>
 
-  <label for="color">🎨 Color:</label>
-  <select id="color">
-    <option>Claro</option>
-    <option>Oscuro</option>
-  </select>
+  <section class="personalizador" id="personalizador">
+    <h2>Personaliza tu mueble</h2>
 
-  <label for="material">🌿 Material:</label>
-  <select id="material">
-    <option>Madera reciclada</option>
-    <option>Madera nueva certificada</option>
-  </select>
+    <div class="selector">
+      <label for="color">Color de Tela:</label>
+      <select id="color">
+        <option>Beige</option>
+        <option>Gris Claro</option>
+        <option>Azul Marino</option>
+      </select>
+    </div>
 
-  <label for="estilo">🛋️ Estilo de diseño:</label>
-  <select id="estilo">
-    <option>Minimalista</option>
-    <option>Rústico</option>
-    <option>Escandinavo</option>
-  </select>
-</div>
+    <div class="selector">
+      <label for="madera">Tipo de Madera:</label>
+      <select id="madera">
+        <option>Madera Clara</option>
+        <option>Madera Oscura</option>
+        <option>Bambú</option>
+      </select>
+    </div>
 
-<script>
-  function mostrarOpciones() {
-    document.getElementById("opciones").style.display = "block";
-  }
-</script>
+    <div class="selector">
+      <label for="tela">Tipo de Tela:</label>
+      <select id="tela">
+        <option>Algodón</option>
+        <option>Lino</option>
+        <option>Cuero ecológico</option>
+      </select>
+    </div>
+
+    <div class="selector">
+      <label for="dimensiones">Dimensiones:</label>
+      <select id="dimensiones">
+        <option>Pequeña</option>
+        <option>Mediana</option>
+        <option>Grande</option>
+      </select>
+    </div>
+  </section>
+
+  <script>
+    function mostrarPersonalizador() {
+      document.getElementById('main').style.display = 'none';
+      document.getElementById('configurador').style.display = 'none';
+      document.getElementById('personalizador').style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
